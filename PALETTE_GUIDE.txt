@@ -1,0 +1,13 @@
+JEJAK UDARA - Midnight Ocean × Aurora Lime
+TIM MAHALANOBIS / GELAR RASA 2026
+
+Prinsip 60/30/10
+60% - latar utama: #0B141A
+30% - bidang/sekunder: #194448
+10% - aksen utama: #C7F36B
+
+Mulai: klik dua kali index.html di dalam folder ini.
+Semua dataset, analisis, fungsi, dan enam tab tetap seperti V9.5.
+Tampilan tema dimuat dari css/palette_60_30_10.css.
+Logo: assets/gelar_rasa_logo.png.
+Semua angka berasal dari dataset sintetis panitia, label pada bagian konten tetap dipertahankan sebagai penjelasan metodologis.

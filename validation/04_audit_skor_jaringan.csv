@@ -1,0 +1,16 @@
+year,station,name,ranked_score,recomputed_score,coverage,nearestKm,island,stations_on_island
+2024,SENS-023,Merauke,85.7,85.75,21.35,1318.7,Papua,2
+2024,SENS-015,Sorong,54.5,54.54,99.36,1238.6,Papua,2
+2024,SENS-024,Medan,46.7,46.69,68.27,425.0,Sumatra,10
+2024,SENS-017,Maros,44.8,44.8,99.37,378.3,Sulawesi,2
+2024,SENS-018,LoreLindu,43.3,43.34,99.51,360.7,Sulawesi,2
+2025,SENS-023,Merauke,86.8,86.79,18.73,1318.7,Papua,2
+2025,SENS-015,Sorong,54.5,54.54,99.37,1238.6,Papua,2
+2025,SENS-024,Medan,46.9,46.95,67.63,425.0,Sumatra,10
+2025,SENS-017,Maros,44.9,44.87,99.2,378.3,Sulawesi,2
+2025,SENS-018,LoreLindu,43.4,43.42,99.32,360.7,Sulawesi,2
+2026,SENS-023,Merauke,86.3,86.3,19.96,1318.7,Papua,2
+2026,SENS-015,Sorong,54.5,54.54,99.36,1238.6,Papua,2
+2026,SENS-024,Medan,46.6,46.6,68.51,425.0,Sumatra,10
+2026,SENS-017,Maros,44.8,44.79,99.39,378.3,Sulawesi,2
+2026,SENS-018,LoreLindu,43.4,43.37,99.43,360.7,Sulawesi,2

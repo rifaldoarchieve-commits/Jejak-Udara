@@ -1,0 +1,11 @@
+scenario,setting,n_stations,ari_vs_monthly2025_k6,silhouette,sizes,n_singletons,medoids,singleton_names
+WDTW g,0,20,1.0,0.6478368425910193,"7,6,3,2,1,1",2,Cisarua; Baranangsiang; Gambir; KotaJambi; PalangkaRaya; Maros,Cisarua; Baranangsiang
+WDTW g,0.02,20,1.0,0.6483626643308347,"7,6,3,2,1,1",2,Cisarua; Baranangsiang; Gambir; KotaJambi; PalangkaRaya; Maros,Cisarua; Baranangsiang
+WDTW g,0.05,20,1.0,0.649269585403909,"7,6,3,2,1,1",2,Cisarua; Baranangsiang; Gambir; KotaJambi; PalangkaRaya; Maros,Cisarua; Baranangsiang
+WDTW g,0.1,20,1.0,0.651051770001305,"7,6,3,2,1,1",2,Cisarua; Baranangsiang; Gambir; KotaJambi; PalangkaRaya; Maros,Cisarua; Baranangsiang
+WDTW g,0.25,20,1.0,0.6576589294803152,"7,6,3,2,1,1",2,Cisarua; Baranangsiang; Gambir; KotaJambi; PalangkaRaya; Maros,Cisarua; Baranangsiang
+WDTW g,1.0,20,0.7298578199052133,0.5554165542244228,"8,6,3,1,1,1",3,Cisarua; Baranangsiang; Indrapuri; Gambir; KotaJambi; Maros,Cisarua; Baranangsiang; Indrapuri
+WDTW g,5.0,20,0.7298578199052133,0.5932097236451034,"8,6,3,1,1,1",3,Cisarua; Baranangsiang; Indrapuri; Gambir; KotaJambi; Maros,Cisarua; Baranangsiang; Indrapuri
+weekly 2025,51 full weeks,20,0.8534704370179949,0.5867078057029878,"6,6,4,2,1,1",2,Cisarua; Baranangsiang; Marunda; Kototabang; PalangkaRaya; Maros,Cisarua; Baranangsiang
+monthly 2024,Jan-Dec,20,1.0,0.6217410646529814,"7,6,3,2,1,1",2,Cisarua; Baranangsiang; Marunda; KotaJambi; PalangkaRaya; Maros,Cisarua; Baranangsiang
+no per station normalization,raw PM2.5,20,0.491395793499044,0.5158332361810779,"5,4,3,3,3,2",0,Cengkareng; KotaJambi; PalangkaRaya; Maros; LoreLindu; Sorong,

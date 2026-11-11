@@ -1,0 +1,15 @@
+JEJAK UDARA – Midnight Ocean + SELECTIVE Aurora Lime
+
+Basis: Dashboard 01 Midnight Ocean Aurora Lime, bukan Full Lime.
+Base dark midnight dan deep teal pada panel, peta, serta atmosfir dipertahankan.
+Aksen cyan pada visualisasi data diubah menjadi lime #C7F36B atau turunannya:
+- Data Quality: donat QC, progress status, heatmap cakupan, progress stasiun, KPI icons.
+- Health Signals: garis tren dan titik korelasi.
+- Episodes: batang hari di bawah ambang dan komposisi hari (hari di atas ambang tetap amber).
+- Overview: heatmap saat nilai tinggi dan garis tren.
+- Spatial & Time: bar pola per jam.
+- Advanced: warna kategori K1 dan indikator validasi utama, tetapi warna K2–K6 dibedakan untuk keterbacaan.
+
+CSS baru: css/selective_lime_charts.css. Tidak ada perubahan pada nilai data atau metode analisis.
+
+Buka index.html langsung setelah ekstraksi lengkap.

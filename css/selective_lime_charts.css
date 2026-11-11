@@ -1,0 +1,29 @@
+/* SELECTIVE LIME ACCENTS — preserves the original Midnight Ocean / deep teal panels. */
+/* All background, tile, map land, layout, and typography base rules remain unchanged. */
+:root{--data-lime:#C7F36B;--data-lime-dim:#A9D55C;}
+
+/* Data Quality: donut is set in app.js because it is a variable conic-gradient. */
+#page-quality .qa-mode-btn.active{background:#C7F36B!important;color:#132019!important;box-shadow:0 0 0 1px #A7D05490!important;}
+#page-quality .qa-kpi-symbol{color:#C7F36B!important;}
+#page-quality .status-bar i{background:#C7F36B!important;}
+#page-quality .quality-station .bar span{background:linear-gradient(90deg,#668347,#C7F36B)!important;}
+#page-quality .qa-low{background:#704d3d!important;}
+#page-quality .qa-mid{background:#78845c!important;}
+#page-quality .qa-high{background:#C7F36B!important;}
+#page-quality .qa-verdict-dot.good{background:#C7F36B!important;box-shadow:0 0 7px #C7F36B80!important;}
+#page-quality .qa-method-cards b,#page-quality .qa-status-extra>strong{color:#C7F36B!important;}
+#page-quality .qa-breakdown-list .qa-parameter.is-current{border-color:#C7F36B!important;}
+
+/* Episodes: below-threshold data = gentle lime; above-threshold remains amber. */
+#page-episodes .ep-daymix-below,#page-episodes .epmix-dot.below{background:#B5DD66!important;}
+#page-episodes .ep-daymix-above,#page-episodes .epmix-dot.above{background:#edb86d!important;}
+#page-episodes .ep-daymix-missing{background:#65757d!important;}
+
+/* Time-series bars use olive-to-lime, never the old cyan-to-green fill. */
+#page-explore .case-hour-fill{background:linear-gradient(to top,#668246,#C7F36B)!important;}
+#page-explore .case-hour-cell:hover .case-hour-fill{background:#E3F7A5!important;}
+
+/* Advanced Analytics: change cyan cluster K1 to lime while retaining other distinct cluster colors. */
+#page-advanced .ad-scope-dot{background:#C7F36B!important;box-shadow:0 0 12px #C7F36B7A!important;}
+#page-advanced .ad-validation-score.selected .ad-score-fg{background:#C7F36B!important;}
+#page-advanced .ad-view-btn.active{background:#C7F36B!important;border-color:#C7F36B!important;color:#142018!important;}

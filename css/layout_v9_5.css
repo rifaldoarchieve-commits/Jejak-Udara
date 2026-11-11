@@ -1,0 +1,56 @@
+/* V9.5: fill empty space in Episodes KPI area with a true day-composition strip.
+   All values follow station/year/pollutant/threshold. Other pages unchanged. */
+#page-episodes .ep-daymix {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 0;
+  gap: 6px;
+  padding: 4px 0 2px;
+  margin-top: auto;
+  flex: 1 1 auto;
+}
+#page-episodes .ep-daymix-heading {
+  display:flex; align-items:center; justify-content:space-between;
+  gap:8px; line-height:1.15;
+}
+#page-episodes .ep-daymix-heading span {
+  color:#8eb3a9; font-size:8px; letter-spacing:.07em; font-weight:850;
+}
+#page-episodes .ep-daymix-heading strong {
+  color:#b7dacd; font-size:9px; font-weight:700; white-space:nowrap;
+}
+#page-episodes .ep-daymix-track {
+  width:100%; height:8px; display:flex; overflow:hidden; flex:0 0 auto;
+  border-radius:99px; background:#33464a; border:1px solid #3d5956;
+}
+#page-episodes .ep-daymix-track > span { height:100%; display:block; min-width:0; }
+#page-episodes .ep-daymix-below { background:#72c7a8; }
+#page-episodes .ep-daymix-above { background:#edb86d; }
+#page-episodes .ep-daymix-missing { background:#65757d; }
+#page-episodes .ep-daymix-legend {
+  display:flex; align-items:center; justify-content:flex-start; flex-wrap:wrap;
+  gap:5px 15px; color:#a3bcb4; font-size:9px; line-height:1.2;
+}
+#page-episodes .ep-daymix-legend span { display:inline-flex; gap:4px; align-items:center; white-space:nowrap; }
+#page-episodes .ep-daymix-legend b { font-weight:800; color:#e2f5e9; }
+#page-episodes .epmix-dot { width:6px; height:6px; border-radius:50%; display:inline-block; flex-shrink:0; }
+#page-episodes .epmix-dot.below { background:#72c7a8; }
+#page-episodes .epmix-dot.above { background:#edb86d; }
+#page-episodes .epmix-dot.missing { background:#65757d; }
+#page-episodes .ep-intro .inline-method {
+  margin-top: 4px;
+  padding-top: 5px;
+  border-top: 1px solid #263c3b;
+  flex: 0 0 auto;
+}
+@media (min-width: 800px) and (max-height: 650px) {
+  #page-episodes .ep-daymix { gap:3px; padding:0; }
+  #page-episodes .ep-daymix-heading span { font-size:7px; }
+  #page-episodes .ep-daymix-legend { font-size:7.7px; gap:4px 9px; }
+  #page-episodes .ep-daymix-track { height:6px; }
+}
+@media (max-width: 799px) {
+  #page-episodes .ep-daymix { margin-top:12px; flex:0 0 auto; }
+  #page-episodes .ep-daymix-legend { gap:7px 10px; }
+}

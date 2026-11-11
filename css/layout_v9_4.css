@@ -1,0 +1,139 @@
+/* Jejak Udara V9.4 — compact cards & visible benchmark.
+   Additive patch: preserve dark theme, one-screen navigation, analytical outputs. */
+
+@media (min-width: 800px) {
+  /* Overview: make benchmark visible without browser zoom or inner scrolling. */
+  #page-overview .area-monitor .snapshot {
+    gap: 4px;
+    justify-content: flex-start;
+    min-height: 0;
+  }
+  #page-overview .area-monitor .snapshot-value { margin: 0; }
+  #page-overview .area-monitor .snapshot-value strong {
+    font-size: clamp(36px, calc(var(--canvas-height) * .052), 48px);
+    line-height: 1.04;
+  }
+  #page-overview .area-monitor .snapshot-mini { gap: 7px; }
+  #page-overview .area-monitor .snapshot-mini div { gap: 2px; }
+  #page-overview .area-monitor .snapshot-mini span { font-size: 7.6px; line-height: 1.15; }
+  #page-overview .area-monitor .snapshot-mini strong { font-size: 17px; line-height: 1.12; }
+  #page-overview .area-monitor .snapshot-quality {
+    font-size: 8.5px;
+    line-height: 1.15;
+    flex: 0 0 auto;
+  }
+}
+#page-overview .area-monitor .case-benchmark {
+  margin-top: auto;
+  padding: 5px 7px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  line-height: 1.2;
+  flex: 0 0 auto;
+  font-size: 9px;
+  overflow: visible;
+  white-space: normal;
+  border-radius: 6px;
+}
+#page-overview .case-benchmark .benchmark-line {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  min-width: 0;
+}
+#page-overview .case-benchmark .benchmark-line > span {
+  color: #92c3b1;
+  font-size: 8px;
+  font-weight: 850;
+  letter-spacing: .025em;
+  white-space: nowrap;
+}
+#page-overview .case-benchmark .benchmark-line > strong {
+  color: #d5f6e6;
+  font-size: 9px;
+  font-weight: 750;
+  min-width: 0;
+  text-align: right;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+#page-overview .case-benchmark .benchmark-caption {
+  color: #96aea5;
+  font-size: 8px;
+  line-height: 1.15;
+}
+
+@media (min-width: 800px) {
+  /* Episodes: shorter summary row, larger timeline instead of unused space. */
+  #page-episodes .ep-grid {
+    grid-template-rows: minmax(0, .74fr) minmax(0, 1.48fr);
+  }
+  #page-episodes .ep-intro .ep-summary {
+    flex: 0 0 auto;
+    align-items: stretch;
+    margin-top: 5px;
+    gap: 7px;
+  }
+  #page-episodes .ep-number {
+    padding: 8px 9px;
+    min-height: 71px;
+    justify-content: center;
+    gap: 3px;
+  }
+  #page-episodes .ep-number span { font-size: 7.6px; line-height: 1.2; letter-spacing: .04em; }
+  #page-episodes .ep-number strong { font-size: 27px; line-height: 1.04; }
+  #page-episodes .ep-number small { font-size: 9px; }
+  #page-episodes .ep-intro .inline-method {
+    margin-top: auto;
+    font-size: 8.6px;
+    line-height: 1.27;
+    padding-top: 4px;
+  }
+  #page-episodes .ep-notes .ep-insight {
+    padding-top: 1px;
+    font-size: 10.6px;
+    line-height: 1.4;
+  }
+  #page-episodes .ep-notes .ep-insight p { margin: 5px 0 2px; }
+  #page-episodes .ep-notes .tile-footer { font-size: 8px; line-height: 1.25; }
+}
+#page-episodes .ep-note-mini {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 7px;
+  margin-top: auto;
+  margin-bottom: 6px;
+}
+#page-episodes .ep-note-mini > div {
+  border: 1px solid #344b44;
+  border-radius: 6px;
+  background: #1a2b29;
+  padding: 7px 9px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+#page-episodes .ep-note-mini span {
+  font-size: 8px;
+  color: #94bdb0;
+  font-weight: 800;
+  letter-spacing: .035em;
+  line-height: 1.2;
+}
+#page-episodes .ep-note-mini strong {
+  font-size: 17px;
+  color: #d9f7e9;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+#page-episodes .ep-note-mini small {
+  font-size: 9px;
+  color: #a0b5ad;
+  font-weight: 500;
+}
+@media (max-width: 799px) {
+  #page-episodes .ep-note-mini { grid-template-columns: 1fr 1fr; }
+}

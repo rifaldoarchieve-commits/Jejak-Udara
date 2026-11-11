@@ -1,0 +1,7 @@
+cluster,n,medoid,members,mean_annual_pm25,avg_sil_non_single,peak_month_z,site_types,peak_month_raw
+1,7,MRS-01_Maros,"Bengkulu, Indrapuri, Malang, Maros, LoreLindu, Sorong, Sleman",24.541046495885958,0.6083551148583286,Agu,Urban Coastal Background; Regional / Clean Background; Urban Background / Valley; Industrial / Karst Perimeter; Regional / Clean Background; Coastal / Regional Background; Urban Background,Agu
+2,6,JMB-01_KotaJambi,"Batam, KotaJambi, Kototabang, PangkalanBun, Pekanbaru, Sintang",40.28223579027547,0.7121032837839794,Sep,Industrial Perimeter / Maritime; Peatland Buffer / Urban; Regional / Clean Background; Peatland Boundary / Airport; Peatland Buffer / Urban; Peatland Boundary / Inland,Sep
+3,3,JKT-01_Gambir,"Gambir, Marunda, Cengkareng",54.007886617776165,0.8269954934620761,Jul,Urban Background; Industrial Perimeter; Traffic / Roadside,Jul
+4,2,KTG-01_PalangkaRaya,"PalangkaRaya, Sampit",44.65270038128168,0.9866498604898869,Okt,Urban Background; Peatland Boundary,Okt
+5,1,BGR-01_Cisarua,Cisarua,13.224292625624331,0.0,Jul,Regional / Clean Background,Jul
+6,1,BGR-02_Baranangsiang,Baranangsiang,19.223245046211847,0.0,Sep,Traffic / Roadside,Sep

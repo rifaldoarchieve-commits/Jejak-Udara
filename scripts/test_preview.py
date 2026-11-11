@@ -1,0 +1,37 @@
+from pathlib import Path
+from playwright.sync_api import sync_playwright
+p=Path(__file__).resolve().parents[1]
+html=(p/'index.html').read_text()
+style=(p/'css/style.css').read_text()
+data=(p/'data/data.js').read_text()
+geo=(p/'assets/map_geometry.js').read_text()
+script=(p/'js/app.js').read_text()
+html=html.replace('<link rel="stylesheet" href="css/style.css"/>','<style>'+style+'</style>')
+html=html.replace('<script src="data/data.js"></script>','<script>'+data+'</script>')
+html=html.replace('<script src="assets/map_geometry.js"></script>','<script>'+geo+'</script>')
+html=html.replace('<script src="js/app.js" defer></script>','<script>'+script+'</script>')
+errors=[]
+with sync_playwright() as pl:
+ browser=pl.chromium.launch(headless=True, executable_path='/usr/bin/chromium', args=['--no-sandbox','--disable-gpu'])
+ page=browser.new_page(viewport={'width':1512,'height':1050},device_scale_factor=1)
+ page.on('pageerror',lambda e:errors.append(str(e)))
+ page.set_content(html,wait_until='load',timeout=45000)
+ page.wait_for_timeout(700)
+ print('title', page.title())
+ print('main path count',page.locator('#overviewMap .map-land').count())
+ print('map points',page.locator('#overviewMap .mapdot').count())
+ print('inset points',page.locator('#westernInset .mapdot').count())
+ print('current station',page.locator('#monitorStationChip').inner_text())
+ print('map data',page.locator('#mapInfo').inner_text())
+ page.screenshot(path='/mnt/data/jejak_udara_v4_preview.png',full_page=True)
+ page.locator('.navtab[data-page="explore"]').click()
+ print('explore visible',page.locator('#page-explore').is_visible())
+ page.locator('.navtab[data-page="overview"]').click()
+ if page.locator('#westernInset .mapdot').count():
+   page.locator('#toggleMapInset').click()
+   print('zoom visible',page.locator('#mapInset').is_visible())
+   page.screenshot(path='/mnt/data/jejak_udara_v4_zoom_preview.png',full_page=True)
+   page.locator('#westernInset .mapdot').first.click(force=True)
+   print('clicked inset station',page.locator('#monitorStationChip').inner_text())
+ print('errors',errors)
+ browser.close()

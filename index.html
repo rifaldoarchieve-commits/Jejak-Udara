@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="id"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="theme-color" content="#0B141A"/><meta name="color-scheme" content="dark"/>
+<meta name="description" content="Jejak Udara — dashboard analisis historis AQMS Gelar Rasa 2026"/>
+<title>Jejak Udara | Environmental Intelligence Dashboard</title>
+<link rel="stylesheet" href="css/style.css"/>
+<link rel="stylesheet" href="css/viewport.css"/><link rel="stylesheet" href="css/case.css"/><link rel="stylesheet" href="css/advanced.css"/><link rel="stylesheet" href="css/layout_v9_4.css"/><link rel="stylesheet" href="css/layout_v9_5.css"/><link rel="stylesheet" href="css/palette_60_30_10.css"/><link rel="stylesheet" href="css/selective_lime_charts.css"/>
+</head><body>
+<a class="skip" href="#main">Langsung ke dashboard</a>
+<div class="app-shell">
+<header class="topbar">
+  <a class="brand" href="#overview" aria-label="Jejak Udara - Overview"><span class="brand-icon">✳</span><span class="brand-words">JEJAK<span>UDARA</span><small>DATA INTELLIGENCE / 26</small></span></a>
+  <nav class="tabnav" id="mainNav" aria-label="Navigasi dashboard">
+    <button type="button" class="navtab active" data-page="overview"><span class="nav-ico">▦</span> Overview</button>
+    <button type="button" class="navtab" data-page="explore"><span class="nav-ico">⌁</span> Spatial &amp; Time</button>
+    <button type="button" class="navtab" data-page="episodes"><span class="nav-ico">◷</span> Episodes</button>
+    <button type="button" class="navtab" data-page="health"><span class="nav-ico">♡</span> Health Signals</button>
+    <button type="button" class="navtab" data-page="quality"><span class="nav-ico">⊞</span> Data Quality</button>
+    <button type="button" class="navtab" data-page="advanced"><span class="nav-ico">◎</span> Advanced Analytics</button>
+  </nav>
+  <div class="top-right"><span class="event-mark"><img class="event-logo" src="assets/gelar_rasa_logo.png" alt="Logo Gelar Rasa"/></span><span class="history-pill team-pill"><span class="statusdot"></span>TIM MAHALANOBIS</span><button type="button" class="fullscreen-button" id="toggleFullscreen" aria-label="Mode layar penuh" title="Mode layar penuh" aria-pressed="false">⛶</button></div>
+</header>
+<main id="main" tabindex="-1">
+  <section class="control-strip" aria-label="Filter global">
+    <div class="page-heading"><span class="eyebrow" id="pageKicker">CONTROL CENTER / 01</span><h1 id="pageHeading">Air Quality Overview</h1><p id="pageSubhead">Dataset sintetis • 27 titik AQMS • 2024–14 Okt 2026</p></div>
+    <div class="control-group">
+      <label class="control"><span>TAHUN</span><select id="filterYear"><option value="2024">2024</option><option value="2025" selected>2025</option><option value="2026">2026*</option></select></label>
+      <label class="control"><span>POLUTAN</span><select id="filterParam"><option value="pm25">PM2.5</option><option value="pm10">PM10</option><option value="no2">NO₂</option><option value="so2">SO₂</option><option value="o3">O₃</option><option value="co">CO</option></select></label>
+      <label class="control select-wide"><span>STASIUN</span><select id="filterStation"></select></label>
+      <button type="button" class="reset-button" id="resetFilters" aria-label="Reset filter" title="Kembali ke pilihan awal">↻</button>
+    </div>
+  </section>
+  <div class="announce" id="globalNotice" hidden role="status"></div>
+  <section class="dashboard-page active" id="page-overview" aria-label="Overview">
+    <div class="bento overview-grid">
+      <article class="tile station-map-tile area-map"><div class="tile-head"><div><span class="section-index">01 / GEO NETWORK</span><h2>Indonesia AQMS Station Map</h2></div><div class="tile-head-right"><span class="small-chip">27 TITIK AQMS</span><button type="button" class="map-zoom-btn" id="toggleMapInset" aria-expanded="false" aria-controls="mapInset" title="Tampilkan pembesaran Jawa">ZOOM JAWA</button><button type="button" class="icon-btn" id="openMapExplorer" aria-label="Buka eksplorasi spasial" title="Buka Spatial & Time">↗</button></div></div><div class="map-wrap"><svg id="overviewMap" viewBox="0 0 900 325" role="img" aria-label="Peta geografis Indonesia dengan 27 titik pemantauan AQMS"></svg><div class="map-inset" id="mapInset" hidden><div class="inset-heading"><strong>ZOOM JAWA &amp; SEKITARNYA</strong><span>DETAIL VIEW</span></div><svg id="westernInset" viewBox="0 0 285 133" role="img" aria-label="Peta pembesaran Indonesia barat dengan titik stasiun"></svg></div><div id="mapInfo" class="map-info" aria-live="polite"></div></div><div class="tile-footer map-footer"><span><i class="legend-point bright"></i> Terpilih</span><span><i class="legend-point muted"></i> Lokasi µg/m³</span><span><i class="legend-point excluded"></i> Unit berbeda</span></div></article>
+      <article class="tile monitor-tile area-monitor"><div class="tile-head"><div><span class="section-index">02 / AIR MONITOR</span><h2>Station Snapshot</h2></div><span class="small-chip" id="monitorStationChip">—</span></div><div class="snapshot"><div class="tiny-cap" id="monitorCaption">PM2.5 • rata-rata hari layak 2025</div><div class="snapshot-value"><strong id="snapshotValue">—</strong><small>µg/m³</small></div><div class="snapshot-divider"></div><div class="snapshot-mini"><div><span>DAYS COVERED</span><strong id="snapshotDays">—</strong></div><div><span>VALID HOUR COVERAGE</span><strong id="snapshotCoverage">—</strong></div></div><div class="snapshot-quality"><span id="coverageTag" class="dot-small"></span><span id="snapshotStatus">Memeriksa cakupan…</span></div><div class="case-benchmark" id="caseBenchmark">Benchmark PM2.5 24 jam menurut PP 22/2021</div></div></article>
+      <article class="tile env-tile area-env"><div class="tile-head"><div><span class="section-index">03 / DATA POINTS</span><h2>Environmental Data</h2></div><span class="chip-quiet">SENSOR SUMMARY</span></div><div class="env-grid"><div class="env-item"><span class="env-symbol">◉</span><strong id="envPM25">—</strong><small>PM2.5</small></div><div class="env-item"><span class="env-symbol">◌</span><strong id="envPM10">—</strong><small>PM10</small></div><div class="env-item"><span class="env-symbol">≋</span><strong id="envNO2">—</strong><small>NO₂</small></div><div class="env-item"><span class="env-symbol">✦</span><strong id="envO3">—</strong><small>O₃</small></div></div><div class="tile-footer">Rerata nilai harian layak • µg/m³ • <span id="envYear">2025</span></div></article>
+      <article class="tile pulse-tile area-pulse"><div class="tile-head"><div><span class="section-index">04 / TIME SIGNAL</span><h2>Pollutant of the Year</h2></div><span id="pulseDelta" class="tiny-tag">12 MONTHS</span></div><div id="overviewSpark" class="spark-holder"></div><div class="tile-footer" id="sparkNote">Rata-rata bulanan dari hari layak analisis</div></article>
+      <article class="tile insight-tile area-insight"><div class="tile-head"><div><span class="section-index">05 / ANALYTICAL NOTE</span><h2>What Stands Out?</h2></div><span class="accent-icon">✳</span></div><div class="insight-content"><span class="insight-over">BASED ON YOUR FILTER</span><p id="insightText">Memuat insight dari data terpilih…</p></div><div class="tile-footer">Asosiasi ≠ kausalitas • hasil historis</div></article>
+      <article class="tile heat-tile area-heat"><div class="tile-head"><div><span class="section-index">06 / SPATIAL FINGERPRINT</span><h2>Monthly Intensity by Station</h2></div><span class="chip-quiet">TOP 6 · <span id="heatParam">PM2.5</span></span></div><div class="heatmap-scroll"><div id="overviewHeat" class="overview-heat"></div></div><div class="tile-footer"><span>Nilai µg/m³ • warna relatif pada tabel ini</span><span>Hover untuk detail</span></div></article>
+      <article class="tile watch-tile area-watch"><div class="tile-head"><div><span class="section-index">07 / STATION RANKING</span><h2>Station Watchlist</h2></div><button id="watchMore" type="button" class="icon-btn" aria-label="Buka pemeringkatan lengkap">↗</button></div><div id="watchlist" class="watchlist"></div><div class="tile-footer"><span>Minimum 120 hari layak analisis / tahun (eksploratif)</span></div></article>
+    </div>
+  </section>
+  <section class="dashboard-page" id="page-explore" aria-label="Spatial & Temporal">
+    <div class="bento explore-grid">
+      <article class="tile exp-chart"><div class="tile-head"><div><span class="section-index">01 / TEMPORAL</span><h2>Monthly Concentration Trend</h2></div><span class="small-chip" id="expUnit">µg/m³</span></div><div id="monthlyChart" class="line-slot"></div><div class="tile-footer">Rerata harian dengan ≥18 jam valid; 2026 hanya sampai 14 Oktober</div></article>
+      <article class="tile exp-rank"><div class="tile-head"><div><span class="section-index">02 / SPATIAL</span><h2>Station Comparison</h2></div><div class="case-small-tabs"><button type="button" id="caseRankStations" class="case-mini active">STASIUN</button><button type="button" id="caseRankIslands" class="case-mini">PULAU</button></div></div><div id="fullRanking" class="ranking"></div></article>
+      <article class="tile exp-months"><div class="tile-head"><div><span class="section-index">03 / CALENDAR</span><h2>Diurnal Pattern & Day Type</h2></div><span class="chip-quiet" id="caseHourScope">PM2.5 · 24 JAM</span></div><div id="stationMonths" class="month-grid" hidden></div><div class="case-hour-chart" id="caseHourly"></div><div id="caseDaytype" class="case-daytype"></div><div class="tile-footer">Rerata polutan pilihan per jam; data WIB · pilih tahun/stasiun</div></article>
+      <article class="tile exp-meta"><div class="tile-head"><div><span class="section-index">04 / SITE CONTEXT</span><h2>PM2.5 Environmental Drivers</h2></div><span class="accent-icon">⌖</span></div><div id="stationProfile" class="profile-body" hidden></div><div id="caseDrivers" class="case-drivers"></div></article>
+    </div>
+  </section>
+  <section class="dashboard-page" id="page-episodes" aria-label="Pollution Episodes">
+    <div class="bento ep-grid">
+      <article class="tile ep-intro"><div class="tile-head"><div><span class="section-index">01 / EPISODE DETECTION</span><h2>High-Concentration Days</h2></div><select id="epBenchmark" class="case-compact-select" aria-label="Pilih ambang episode"><option value="pp22">PP22 · 24 JAM</option><option value="who">WHO · 24 JAM</option><option value="p95">P95 · 2024</option></select></div><div class="ep-summary"><div class="ep-number"><span id="epThresholdTitle">AMBANG 24-JAM</span><strong id="epThreshold">—</strong><small>µg/m³</small></div><div class="ep-number"><span>DAYS ABOVE THRESHOLD</span><strong id="epDays">—</strong><small>hari</small></div><div class="ep-number"><span>LONGEST STREAK</span><strong id="epStreak">—</strong><small>hari beruntun</small></div><div class="ep-number"><span>DAILY PEAK</span><strong id="epPeak">—</strong><small>µg/m³</small></div></div><div class="ep-daymix" id="epDayMix" aria-label="Komposisi hari di bawah ambang, di atas ambang, dan kurang data"><div class="ep-daymix-heading"><span>KOMPOSISI HARI DALAM PERIODE</span><strong id="epMixCaption">—</strong></div><div class="ep-daymix-track" role="img" aria-label="Proporsi hari layak dan tidak layak"><span class="ep-daymix-below" id="epMixBelow" style="width:0%"></span><span class="ep-daymix-above" id="epMixAbove" style="width:0%"></span><span class="ep-daymix-missing" id="epMixMissing" style="width:100%"></span></div><div class="ep-daymix-legend"><span><i class="epmix-dot below"></i><b id="epMixBelowLabel">—</b> di bawah / sama ambang</span><span><i class="epmix-dot above"></i><b id="epMixAboveLabel">—</b> di atas</span><span><i class="epmix-dot missing"></i><b id="epMixMissingLabel">—</b> kurang data</span></div></div><p class="inline-method" id="epMethod">Pembanding 55 µg/m³ berasal dari PP 22/2021. Rerata dari ≥18 jam valid hanya indikatif, bukan penilaian kepatuhan resmi.</p></article>
+      <article class="tile ep-notes"><div class="tile-head"><div><span class="section-index">02 / EPISODE NOTE</span><h2>Interpretation</h2></div></div><div id="epInsight" class="ep-insight"></div><div id="epNoteMetrics" class="ep-note-mini" aria-label="Ringkasan cakupan dan proporsi hari tinggi"></div><div class="tile-footer">Hari tidak layak ≠ hari rendah · Hasil tidak menetapkan penyebab polusi.</div></article>
+      <article class="tile ep-timeline"><div class="tile-head"><div><span class="section-index">03 / DAILY TIMELINE</span><h2>Pollution Episode Timeline</h2></div><span id="epLabel" class="small-chip">2025</span></div><div id="episodeChart" class="episode-chart"></div><div class="ep-legend"><span><i class="mini-dot calm"></i> Di bawah ambang</span><span><i class="mini-dot alert"></i> <span id="caseEpisodeLegend">Di atas 55 · indikatif</span></span><span><i class="mini-dot absent"></i> Kurang data</span></div></article>
+      <article class="tile ep-bucket"><div class="tile-head"><div><span class="section-index">04 / MONTHLY COUNTS</span><h2>High-Day Frequency by Month</h2></div></div><div id="episodeMonths" class="ep-months"></div></article>
+    </div>
+  </section>
+  <section class="dashboard-page" id="page-health" aria-label="Health Signals">
+    <div class="health-warning case-health-context"><strong>27 pasangan AQMS–RS menurut booklet.</strong> PM2.5 historis disandingkan dengan hitungan kasus sintetis; asosiasi ≠ bukti sebab-akibat atau risiko populasi. <span id="casePairLabel"></span></div>
+    <div class="health-controls case-health-controls">
+      <label class="control select-wide"><span>RUMAH SAKIT (PASANGAN STASIUN)</span><select id="hospitalSelect"></select></label>
+      <label class="control select-wide"><span>INDIKATOR KESEHATAN</span><select id="caseOutcome">
+        <option value="resp">Rawat pernapasan umum</option>
+        <option value="resp_admissions_under5">ISPA balita (&lt;5)</option>
+        <option value="resp_admissions_over60">ISPA lansia (&gt;60)</option>
+        <option value="asthma_emergency_cases">Darurat asma</option>
+        <option value="copd_admissions">PPOK</option>
+        <option value="cvd">Kardiovaskular</option>
+        <option value="death">Kematian</option>
+      </select></label>
+      <label class="control"><span>LAG PAPARAN</span><select id="caseLag"><option value="0">0 hari</option><option value="1">1 hari</option><option value="2">2 hari</option><option value="3">3 hari</option></select></label>
+      <span class="muted small-text" id="hospitalContext">RS berpasangan • PM2.5</span>
+    </div>
+    <div class="bento health-grid case-health-grid">
+      <article class="tile hl-main"><div class="tile-head"><div><span class="section-index">01 / HOSPITAL TIMESERIES</span><h2>Tren Indikator Kesehatan per Bulan</h2></div><span class="small-chip">RERATA HARIAN</span></div><div id="healthTrend" class="line-slot"></div><div class="tile-footer" id="caseHealthTrendNote">Sumber: HLT-01 • hitungan per hari, bukan insidensi.</div></article>
+      <article class="tile hl-kpi"><div class="tile-head"><div><span class="section-index">02 / PAIRED METRICS</span><h2>Hospital & Exposure Snapshot</h2></div><span class="small-chip">SYNTHETIC</span></div><div class="health-metrics case-health-metrics"><div><span>PEARSON r · PM2.5</span><strong id="hCorr">—</strong></div><div><span>PAIRED DAYS</span><strong id="hPaired">—</strong></div><div><span>ISPA BALITA / HARI</span><strong id="hUnder5">—</strong></div><div><span>ISPA LANSIA / HARI</span><strong id="hOver60">—</strong></div></div><div id="hAdjusted" class="v8-adjusted-mini" aria-live="polite">Model penyesuaian memuat...</div></article>
+      <article class="tile hl-scatter"><div class="tile-head"><div><span class="section-index">03 / LAG ASSOCIATION</span><h2>PM2.5 vs Indikator Kesehatan</h2></div><span id="caseScatterLabel" class="small-chip">LAG 0</span></div><div id="caseScatter" class="case-scatter"></div><div class="tile-footer">12 kelompok kuantil PM2.5; korelasi dihitung dari pasangan harian asli, bukan dari kelompok.</div></article>
+      <article class="tile hl-note"><div class="tile-head"><div><span class="section-index">04 / INTERPRETATION</span><h2>Interpretasi & Kerentanan</h2></div></div><div id="caseHealthInterpretation" class="case-health-interpretation"></div><div id="caseLagStrip" class="case-lag-strip"></div><div class="tile-footer">Angka balita vs lansia = volume kasus; bukan risiko tanpa denominator populasi.</div></article>
+    </div>
+  </section>
+  <section class="dashboard-page" id="page-quality" aria-label="Data Quality">
+    <div class="qa-toolbar">
+      <div class="qa-scope"><span class="section-index">DATA INTEGRITY / QUALITY AUDIT</span><strong id="qaScopeLabel">All stations • full historical period</strong><small id="qaScopeHint">Audit seluruh baris pengukuran; tidak terpengaruh filter di atas.</small></div>
+      <div class="qa-mode" role="group" aria-label="Mode cakupan audit">
+        <button type="button" id="qaModeAll" class="qa-mode-btn active" aria-pressed="true">Overall Dataset</button>
+        <button type="button" id="qaModeFiltered" class="qa-mode-btn" aria-pressed="false">Filtered Quality</button>
+      </div>
+    </div>
+    <div class="qa-grid">
+      <article class="tile qa-kpis">
+        <div class="qa-kpi-row" id="qaKpiRow" aria-live="polite"></div>
+      </article>
+      <article class="tile qa-status">
+        <div class="tile-head"><div><span class="section-index">01 / QC DISTRIBUTION</span><h2>Measurement Quality & Status</h2></div><span class="small-chip" id="qaStatusChip">ALL RECORDS</span></div>
+        <div class="qa-status-body">
+          <div class="qa-donut-block"><div class="qc-donut" id="qcDonut"><div><strong id="qcPercent">—</strong><span>QC VALID</span></div></div>
+            <div class="qa-donut-numbers"><div><span>TOTAL RECORDS</span><b id="qcTotal">—</b></div><div><span>VALID</span><b id="qcValid">—</b></div><div><span>OTHER STATUS</span><b id="qcOther">—</b></div></div>
+          </div>
+          <div class="qa-status-right"><div id="qcStatus" class="status-list qa-status-list"></div><div id="qaStatusExtra" class="qa-status-extra" hidden></div></div>
+        </div>
+        <div class="tile-footer" id="qaStatusFooter">Persentase baris QC VALID; bukan cakupan jam.</div>
+      </article>
+      <article class="tile qa-months">
+        <div class="tile-head"><div><span class="section-index">02 / COVERAGE MATRIX</span><h2 id="qaMonthHeading">Valid Hour Coverage by Month</h2></div><span class="small-chip" id="qaMatrixChip">2024–2026</span></div>
+        <div class="qa-matrix-legend"><span><i class="qa-color-box qa-low"></i>Rendah</span><span><i class="qa-color-box qa-mid"></i>Sedang</span><span><i class="qa-color-box qa-high"></i>Tinggi</span></div>
+        <div id="qaMonthMatrix" class="qa-month-matrix" aria-label="Matriks bulanan cakupan jam"></div>
+        <div class="qa-matrix-summary" id="qaMatrixSummary"></div>
+        <div class="tile-footer" id="qaMatrixFooter">Proporsi slot jam unik yang memenuhi kriteria.</div>
+      </article>
+      <article class="tile qa-stations">
+        <div class="tile-head"><div><span class="section-index">03 / RELIABILITY BREAKDOWN</span><h2 id="qaBreakdownTitle">Stations Requiring Attention</h2></div><span class="small-chip" id="qaBreakdownChip">BOTTOM 8</span></div>
+        <div id="qcStationList" class="quality-station-list qa-breakdown-list"></div>
+        <div class="tile-footer" id="qaBreakdownFooter">Urutan berdasarkan proporsi baris berstatus VALID.</div>
+      </article>
+      <article class="tile qa-method">
+        <div class="tile-head"><div><span class="section-index">04 / ANALYTICAL RELIABILITY</span><h2>Interpretation & Methodology</h2></div><span class="small-chip">TRANSPARENT QC</span></div>
+        <div id="qaQualityVerdict" class="qa-verdict"></div><div id="caseNetwork" class="case-network" aria-label="Evaluasi distribusi jaringan 27 stasiun"></div>
+        
+        <div class="tile-footer">QC VALID ≠ lengkap · ≥18 jam/hari eksploratif · 3 stasiun ppm dipisah · 2026 parsial.</div>
+      </article>
+    </div>
+  </section>
+  <section class="dashboard-page" id="page-advanced" aria-label="Advanced Analytics — WDTW clustering">
+    <div class="ad-toolbar">
+      <div class="ad-scope"><span class="ad-scope-dot"></span><span><strong>K-MEDOIDS + WDTW</strong> · pola PM2.5 bulanan 2025 · Z-score per stasiun</span><span class="ad-scope-sub">20 dari 27 stasiun memenuhi kriteria · g = 0,05</span></div>
+      <div class="ad-modes" role="group" aria-label="Pilih jumlah klaster"><button class="ad-mode active" type="button" id="adMode6" aria-pressed="true">K = 6</button><button class="ad-mode" type="button" id="adMode3" aria-pressed="false">K = 3 · pembanding</button></div>
+      <div class="ad-mini-stats"><span><b id="adSilhouette">0,6493</b><small>SILHOUETTE</small></span><span><b id="adSingletons">2</b><small>SINGLETON</small></span><span><b id="adActiveCluster">K3</b><small>KLASTER TERPILIH</small></span></div>
+    </div>
+    <div class="bento ad-grid">
+      <article class="tile ad-shape">
+        <div class="tile-head"><div><span class="section-index">01 / SHAPE CLUSTERING</span><h2>Pola Perubahan PM2.5 (Z-score)</h2></div><div class="ad-shape-switch" role="group" aria-label="Mode tampilan grafik pola"><button type="button" id="adViewAll" class="ad-view-btn active" aria-pressed="true">SEMUA</button><button type="button" id="adViewDetail" class="ad-view-btn" aria-pressed="false">DETAIL K3</button><select id="adClusterPicker" class="ad-cluster-picker" aria-label="Pilih klaster"></select></div></div>
+        <div id="adShapeChart" class="ad-chart"></div>
+        <div id="adClusterLegend" class="ad-legend" role="group" aria-label="Pilih klaster dan anggota"></div>
+        <div class="tile-footer" id="adShapeFooter" aria-live="polite">Rata-rata Z-score setiap klaster. Klik DETAIL KLASTER untuk menampilkan garis anggotanya.</div>
+      </article>
+      <article class="tile ad-map">
+        <div class="tile-head"><div><span class="section-index">02 / STATION GEOGRAPHY</span><h2>Peta Kelompok AQMS</h2></div><span class="small-chip">20 / 27 LOKASI</span></div>
+        <div id="adMap" class="ad-map-wrap"></div>
+        <div id="adMapInfo" class="ad-map-info"></div>
+        <div class="tile-footer">Warna = klaster pola · titik gelap = tidak dianalisis · klik stasiun</div>
+      </article>
+      <article class="tile ad-members">
+        <div class="tile-head"><div><span class="section-index">03 / MEMBERSHIP & MEDOID</span><h2>Anggota dan Stasiun Representatif</h2></div><span class="small-chip" id="adMemberCount">6 KELOMPOK</span></div>
+        <div id="adMemberGrid" class="ad-member-grid"></div>
+      </article>
+      <article class="tile ad-original">
+        <div class="tile-head"><div><span class="section-index">04 / ABSOLUTE CONTEXT</span><h2>Konsentrasi Asli per Klaster</h2></div><span class="small-chip">µg/m³</span></div>
+        <div id="adAnnualBars" class="ad-annual"></div>
+        <div id="adSelectedInfo" class="ad-selected-info"></div>
+        <div class="tile-footer">Rerata konsentrasi asli per klaster (µg/m³), bukan variabel pembentukan klaster.</div>
+      </article>
+      <article class="tile ad-validation">
+        <div class="tile-head"><div><span class="section-index">05 / MODEL CHECKS</span><h2>Validasi Model</h2></div><span class="small-chip">WDTW</span></div>
+        <div id="adValidation" class="ad-validation-body"></div>
+      </article>
+    </div>
+  </section>
+  <footer class="app-footer" aria-hidden="true"></footer>
+</main></div>
+<div class="floating-tip" id="floatingTip" hidden></div>
+<script src="data/data.js"></script><script src="data/quality.js"></script><script src="data/case.js"></script><script src="data/v8.js"></script><script src="data/wdtw.js"></script><script src="assets/map_geometry.js"></script><script src="js/viewport.js" defer></script><script src="js/advanced.js" defer></script><script src="js/app.js" defer></script>
+</body></html>

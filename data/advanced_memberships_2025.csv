@@ -1,0 +1,21 @@
+﻿station,name,cluster_k6,medoid_k6,silhouette_k6,cluster_k3,medoid_k3,silhouette_k3,pm25_mean_2025,site_type,province
+BGL-01_Bengkulu,Bengkulu,1,MRS-01_Maros,0.7195077728857048,3,MRS-01_Maros,0.7437983378737965,25.61817605981592,Urban Coastal Background,Bengkulu
+IDP-01_Indrapuri,Indrapuri,1,MRS-01_Maros,0.155437230757392,3,MRS-01_Maros,0.27008488776116396,9.195296596373472,Regional / Clean Background,Aceh
+MLG-01_Malang,Malang,1,MRS-01_Maros,0.7263520183145088,3,MRS-01_Maros,0.750820163972779,30.742454792785264,Urban Background / Valley,Jawa Timur
+MRS-01_Maros,Maros,1,MRS-01_Maros,0.7288149895128333,3,MRS-01_Maros,0.7531447282002495,36.914521085871236,Industrial / Karst Perimeter,Sulawesi Selatan
+PLU-01_LoreLindu,LoreLindu,1,MRS-01_Maros,0.7232813947251715,3,MRS-01_Maros,0.7473199055219968,11.298503238594622,Regional / Clean Background,Sulawesi Tengah
+SRG-01_Sorong,Sorong,1,MRS-01_Maros,0.7229062260512725,3,MRS-01_Maros,0.7480969568141774,18.445947635668446,Coastal / Regional Background,Papua Barat Daya
+YKY-01_Sleman,Sleman,1,MRS-01_Maros,0.48218617176141754,3,MRS-01_Maros,0.5340821050105641,39.57242606209274,Urban Background,D.I. Yogyakarta
+BTM-01_Batam,Batam,2,JMB-01_KotaJambi,0.6467192622555599,2,KTB-01_Kototabang,0.5168665656989148,47.87555589339009,Industrial Perimeter / Maritime,Kepulauan Riau
+JMB-01_KotaJambi,KotaJambi,2,JMB-01_KotaJambi,0.7768821956593857,2,KTB-01_Kototabang,0.6549465646084689,44.9067138872909,Peatland Buffer / Urban,Jambi
+KTB-01_Kototabang,Kototabang,2,JMB-01_KotaJambi,0.7574790579771524,2,KTB-01_Kototabang,0.683605523367139,18.446904877327167,Regional / Clean Background,Sumatera Barat
+PKN-01_PangkalanBun,PangkalanBun,2,JMB-01_KotaJambi,0.6423247400718058,2,KTB-01_Kototabang,0.6878372290252298,44.56942969999619,Peatland Boundary / Airport,Kalimantan Tengah
+PKU-01_Pekanbaru,Pekanbaru,2,JMB-01_KotaJambi,0.763498966944429,2,KTB-01_Kototabang,0.633752465284586,47.540199942493295,Peatland Buffer / Urban,Riau
+STG-01_Sintang,Sintang,2,JMB-01_KotaJambi,0.6857154797955434,2,KTB-01_Kototabang,0.6907938015538414,38.354610441155195,Peatland Boundary / Inland,Kalimantan Barat
+JKT-01_Gambir,Gambir,3,JKT-01_Gambir,0.8512953572133132,2,KTB-01_Kototabang,0.493233140220547,48.03283193408097,Urban Background,DKI Jakarta
+JKT-02_Marunda,Marunda,3,JKT-01_Gambir,0.8125000876123281,2,KTB-01_Kototabang,0.4780485728130098,60.01140616241481,Industrial Perimeter,DKI Jakarta
+JKT-03_Cengkareng,Cengkareng,3,JKT-01_Gambir,0.8171910355605874,2,KTB-01_Kototabang,0.49663109045131015,53.9794217568327,Traffic / Roadside,DKI Jakarta
+KTG-01_PalangkaRaya,PalangkaRaya,4,KTG-01_PalangkaRaya,0.9866068686427667,2,KTB-01_Kototabang,0.469744138250528,44.596904145876174,Urban Background,Kalimantan Tengah
+KTG-02_Sampit,Sampit,4,KTG-01_PalangkaRaya,0.9866928523370071,2,KTB-01_Kototabang,0.4698952093848613,44.70849661668722,Peatland Boundary,Kalimantan Tengah
+BGR-01_Cisarua,Cisarua,5,BGR-01_Cisarua,0.0,1,BGR-01_Cisarua,0.14285252535423384,13.224292625624331,Regional / Clean Background,Jawa Barat
+BGR-02_Baranangsiang,Baranangsiang,6,BGR-02_Baranangsiang,0.0,1,BGR-01_Cisarua,0.12723415510363456,19.223245046211847,Traffic / Roadside,Jawa Barat
